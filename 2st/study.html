@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>study</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        *{margin:0;padding:0;}
+        button{background:none;border:none;}
+        #app{position:relative;display:flex;justify-content:center;align-items:center;flex-flow:column;width:100vw;height:100vh;text-align:center;}
+        .btn{display:inline-flex;justify-content:center;align-items:center;padding:10px;margin:10px;border-radius:10px;font-size:2rem;color:#000;}
+        .btn.tomato{background:tomato;}
+        .btn.antiquewhite{background:antiquewhite;}
+        .btn.lavender{background:lavender;}
+        .snackbar-box{position:fixed;left:10px;right:10px;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:20px;background:#222;border-radius:10px;transform:translateY(100%);transition:0.3s;}
+        .snackbar-box.active{transform:translateY(-10px);}
+        .snackbar-box p{font-size:1rem;color:#fff;}
+        .snackbar-box button{font-size:1rem;color:cornflowerblue;}
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button class="btn" v-for="(item, key) in snackData" :key="key" :class="item.class" @click="snackShow(item)">{{ item.title }}</button>
+        <div class="snackbar-box" :class="{active: isActive}"><!-- v-bind:class="{ 클래스명: 조건 } -->
+            <p>{{ snackInfo.content }}</p>
+            <button @click="snackHide">OK</button>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      isActive:false,
+      snackData:[
+        {
+          class:'tomato',
+          title:'snackbar1',
+          content:'snackbar message1'
+        },
+        {
+          class:'antiquewhite',
+          title:'snackbar2',
+          content:'snackbar message2'
+        },
+        {
+          class:'lavender',
+          title:'snackbar3',
+          content:'snackbar message3'
+        }
+      ],
+      snackInfo: {
+        content: ''
+      }
+    },
+    methods:{
+      snackShow: function (item) {
+        this.isActive = true;
+        this.snackInfo.content = item.content;
+        //함수가 새로 선언되 원래 위치 유지 this가 vue instance 가리킴
+        setTimeout(() => {
+          this.snackHide()
+        }, 3000)
+        //function()은 this가 vue instance가 아닌 새로 선언된 함수를 가리킴
+        //사용하기 위해선 bind()에 this를 전달을 써줘야함
+        //setTimeout(function () { this.snackHide() }.bind(this), 3000)
+      },
+      snackHide: function(){
+        this.isActive = false;
+      }
+    }
+  
+  });
+</script>

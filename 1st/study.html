@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<script src="test.js" type="application/javascript"></script>
+	<title>tooltip</title>
+	<style>
+		.tooltip-wrap{
+          position: relative;
+          display: flex;
+          justify-content:center;
+          align-items:center;
+          width:50%;
+          margin:50px auto;
+          padding:20px;
+        }
+        .tooltip-wrap h2{
+          font-size:26px;
+          color:#000;
+        }
+	</style>
+</head>
+<body>
+
+<div class="tooltip-wrap">
+	<h2 tooltip-target="test1">example01</h2>
+	<simple-tooltip id="test1" bgColor="pink">
+		<slot slot="title">title01</slot>
+	    <slot slot="content">content01</slot>
+	</simple-tooltip>
+</div>
+
+<div class="tooltip-wrap">
+	<h2 tooltip-target="test2">example02</h2>
+	<simple-tooltip id="test2" bgColor="skyblue">
+		<slot slot="title">title02</slot>
+	    <slot slot="content">content02</slot>
+	</simple-tooltip>
+</div>
+
+</body>
+</html>
