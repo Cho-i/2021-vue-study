@@ -8,12 +8,8 @@
 </template>
 
 <script>
-	import Lnb from "@/components/Lnb";
 	export default {
-		name: "content",
-		components:{
-			Lnb
-		}
+		name: "content"
 	}
 </script>
 
