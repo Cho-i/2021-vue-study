@@ -17,6 +17,7 @@ const app = new Vue({
   render(h){return h (this.ViewComponet)},
 }).$mount('#app')
 
+//popstate : pushState/replaceState 후 앞/뒤로가기 했을때 발생하는 이벤트
 window.addEventListener('popstate', () => {
   app.currentRoute = window.location.pathname;
 });
