@@ -1,6 +1,6 @@
 <template>
 	<div class="radio-box">
-		<input type="radio" v-bind:name="name" v-bind:id="id" v-bind:value="id" v-bind:checked="checked" v-on:change="updateRadio">
+		<input type="radio" v-bind:name="name" v-bind:id="id" v-bind:value="id" v-on:change="updateRadio">
 		<label v-bind:for="id">{{ label }}</label>
 	</div>
 </template>
@@ -9,16 +9,18 @@
 export default {
 	name: "BaseRadio",
 	props:['value','name','id','label'],
+	methods:{
+		updateRadio: function (event) {
+			//this.$emit('change',event.target.checked);
+			//console.log(this.checked);
+			console.log(this.checked =! event.target.checked);
+			//this.checked =! event.target.checked
+			
+		}
+	},
 	data(){
 		return{
 			checked:false
-		}
-	},
-	methods:{
-		updateRadio: function (event) {
-			this.checked = event.target.checked;
-			//this.$emit('change',event.target.value);
-			
 		}
 	}
 }
