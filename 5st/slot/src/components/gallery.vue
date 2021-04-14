@@ -1,7 +1,7 @@
 <template>
 	<div id="gallery">
 		<ul>
-			<li v-for="(item, key) in items" :key="key" @mouseover="mouseOver" @mouseleave="mouseLeave">
+			<li v-for="(item, key) in items" :key="key">
 				<div class="img-box"><img :src="require(`@/assets/img/${item.src}`)" alt=""></div>
 				<div class="txt-box">
 					<p class="title">{{item.title}}</p>
@@ -19,14 +19,6 @@ export default {
 	data() {
 		return {
 			//isActive: false
-		}
-	},
-	methods: {
-		mouseOver: function(e){
-			e.currentTarget.classList.add('hover');
-		},
-		mouseLeave: function(e){
-			e.currentTarget.classList.remove('hover');
 		}
 	}
 }
@@ -60,7 +52,7 @@ export default {
 					opacity:0;
 					transition:0.3s;
 				}
-				&.hover{
+				&:hover{
 					&:before{
 						top:0;
 						opacity:1;

@@ -53,7 +53,6 @@ export default {
 <style lang="scss" scoped>
 	.about{
 		position:relative;
-		overflow:hidden;
 		.tab-wrap{
 			display:flex;
 			justify-content:center;
